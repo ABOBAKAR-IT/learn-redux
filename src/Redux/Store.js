@@ -1,17 +1,30 @@
 import {createStore} from 'redux';
-
-const reducer=(state=0,action)=>{
+const initialState={
+    count:0,
+    count1:1,
+    count2:2
+}
+const reducer=(state=initialState,action)=>{
     switch(action.type){
         case 'ADD':
-            state=state+1;
-            break;
+          return {...state,count:state.count+1}
+           
         case 'SUBTRACT':
-            state=state-1;
-            break;
+           return {...state,count:state.count-1}
+           case 'ADD1':
+            return {...state,count1:state.count1+1}
+             
+          case 'SUBTRACT1':
+             return {...state,count1:state.count1-1}
+             case 'ADD2':
+                return {...state,count2:state.count2+1}
+                 
+              case 'SUBTRACT2':
+                 return {...state,count2:state.count2-1}
+                  
         default:
-                state=state;
-                break
+               return state;
     }   
-    return state;
+    
 }
 export const store=createStore(reducer)
